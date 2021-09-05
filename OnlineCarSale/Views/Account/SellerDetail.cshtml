@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "SellerDetail";
+}
+
+<h3 class="mt-3 mb-3">Seller Detail</h3>
+<table class="table-primary mb-3">
+    <tbody mb-3>
+        <tr mb-5>
+            <th scope="row">User Name</th>
+            <td>MarkLarry</td>
+        </tr>
+        <tr mb-5>
+            <th scope="row">Password</th>
+            <td>******</td>
+        </tr>
+        <tr mb-5>
+            <th scope="row">Name</th>
+            <td>Mark Larry</td>
+        </tr>
+        <tr mb-5>
+            <th scope="row">Address</th>
+            <td>1 Oxford Street</td>
+        </tr>
+        <tr mb-5>
+            <th scope="row">Phone Number</th>
+            <td>021123456</td>
+        </tr>
+        <tr mb-5>
+            <th scope="row">Email</th>
+            <td>marklarry@gmail.com</td>
+        </tr>
+        <tr mb-5>
+            <td>
+                <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("AddCar", "Account")'">
+                    <i class="bi bi-plus-circle"> Add New Car </i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
