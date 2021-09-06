@@ -13,5 +13,9 @@ namespace OnlineCarSale.Controllers
         {
             return View();
         }
+        public ActionResult SearchResult()
+        {
+            return View();
+        }
     }
 }
