@@ -1,42 +1,52 @@
-﻿
+﻿@model OnlineCarSale.Models.Seller
+
 @{
     ViewBag.Title = "SellerDetail";
 }
 
-<h3 class="mt-3 mb-3">Seller Detail</h3>
-<table class="table-primary mb-3">
-    <tbody>
-        <tr>
-            <th scope="row">User Name</th>
-            <td>MarkLarry</td>
-        </tr>
-        <tr>
-            <th scope="row">Password</th>
-            <td>******</td>
-        </tr>
-        <tr>
-            <th scope="row">Name</th>
-            <td>Mark Larry</td>
-        </tr>
-        <tr>
-            <th scope="row">Address</th>
-            <td>1 Oxford Street</td>
-        </tr>
-        <tr>
-            <th scope="row">Phone Number</th>
-            <td>021123456</td>
-        </tr>
-        <tr>
-            <th scope="row">Email</th>
-            <td>marklarry@gmail.com</td>
-        </tr>
-        <tr>
-            <td>
-                <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("AddCar", "Account")'">
-                    <i class="bi bi-plus-circle"> Add New Car </i>
-                </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<h3 class="mt-3 mb-3">Your Details</h3>
+
+@if (Session["Name"] != null)
+{
+    <table class="table-primary mb-3">
+        <tbody>
+            <tr>
+                <th scope="row"> Name </th>
+                <td>@Html.DisplayFor(s => s.Name)</td>
+            </tr>
+            <tr>
+                <th scope="row"> Address </th>
+                <td>@Html.DisplayFor(s => s.Address)</td>
+            </tr>
+            <tr>
+                <th scope="row"> Phone </th>
+                <td>@Html.DisplayFor(s => s.Phone)</td>
+            </tr>
+            <tr>
+                <th scope="row"> Email </th>
+                <td>@Html.DisplayFor(s => s.Email)</td>
+            </tr>
+            <tr>
+                <th scope="row"> Username </th>
+                <td>@Html.DisplayFor(s => s.Username)</td>
+            </tr>
+            <tr>
+                <th scope="row"> Passowrd </th>
+                <td>@Html.DisplayFor(s => s.Passowrd)</td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="@Url.Action("Logout","Login")" class="btn btn-warning">Logout</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+<div class="row mt-3 mb-3">
+    <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Addcar", "Account")'">
+        <i class="bi bi-plus-circle"> Add New Car </i>
+    </button>
+</div>
+
 

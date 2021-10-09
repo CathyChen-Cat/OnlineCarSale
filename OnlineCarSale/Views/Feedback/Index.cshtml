@@ -1,4 +1,5 @@
-﻿
+﻿@model OnlineCarSale.Models.Feedback
+
 @{
     ViewBag.Title = "Feedback";
 }
@@ -56,6 +57,9 @@
         </div>
         <div class="col-12 mt-3">
             <button type="submit" class="btn btn-primary">SUBMIT</button>
+        </div>
+        <div class="col-12 mt-3">
+            @ViewBag.Message
         </div>
     </div>
 </form>

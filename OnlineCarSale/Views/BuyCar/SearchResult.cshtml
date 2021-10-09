@@ -20,136 +20,21 @@
 
 <div class="album py-5 bg-light">
     <div class="container">
-
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col">
                 <div class="card shadow-sm">
                     <img class="bd-placeholder-img card-img-top" style="width:100%" height="225" src="~/Content/Images/car4.jpg" />
-                            
-                    <div class="card-body">
-                        <p class="card-text">Car 1</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img class="bd-placeholder-img card-img-top" style="width:100%" height="225" src="~/Content/Images/car5.jpg" />
 
                     <div class="card-body">
-                        <p class="card-text">Car 2</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img class="bd-placeholder-img card-img-top" style="width:100%" height="225" src="~/Content/Images/car6.jpg" />
+                        @foreach (var i in Model)
+                        {
+                            <p class="card-text"> Company: @i.Company</p>
+                            <p class="card-text"> Model: @i.Model</p>
+                            <p class="card-text"> Location: @i.Location</p>
+                            <p class="card-text"> BodyType: @i.BodyType</p>
+                            <p class="card-text"> Price: $@i.Price</p>
+                        }
 
-                    <div class="card-body">
-                        <p class="card-text">Car 3</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img class="bd-placeholder-img card-img-top" style="width:100%" height="225" src="~/Content/Images/car7.jpg" />
-
-                    <div class="card-body">
-                        <p class="card-text">Car 4</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img class="bd-placeholder-img card-img-top" style="width:100%" height="225" src="~/Content/Images/car8.jpg" />
-
-                    <div class="card-body">
-                        <p class="card-text">Car 5</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img class="bd-placeholder-img card-img-top" style="width:100%" height="225" src="~/Content/Images/car1.jpg" />
-
-                    <div class="card-body">
-                        <p class="card-text">Car 6</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img class="bd-placeholder-img card-img-top" style="width:100%" height="225" src="~/Content/Images/car2.jpg" />
-
-                    <div class="card-body">
-                        <p class="card-text">Car 7</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img class="bd-placeholder-img card-img-top" style="width:100%" height="225" src="~/Content/Images/car3.jpg" />
-
-                    <div class="card-body">
-                        <p class="card-text">Car 8</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img class="bd-placeholder-img card-img-top" style="width:100%" height="225" src="~/Content/Images/car9.jpg" />
-
-                    <div class="card-body">
-                        <p class="card-text">Car 9</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-sm btn-outline-secondary">View</button>

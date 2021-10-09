@@ -11,6 +11,7 @@ namespace OnlineCarSale.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Seller
     {
@@ -19,13 +20,30 @@ namespace OnlineCarSale.Models
         {
             this.Cars = new HashSet<Car>();
         }
-    
+
         public int SId { get; set; }
+
+        [Required(ErrorMessage = "Please enter Name"), MaxLength(50)]
+        [RegularExpression("^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)",
+         ErrorMessage = "Valid Name include first name and last name seperated by space")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Please enter Address"), MaxLength(50)]
         public string Address { get; set; }
+
+        [Required(ErrorMessage = "Please enter phone number")]
+        [RegularExpression("^(\\([0]\\d{1}\\))(\\d{7}$)|(^\\([0][2]\\d{1}\\))(\\d{6,8}$)|([0][8][0][0])([\\s])(\\d{5,8}$)",
+         ErrorMessage = "NZ phone number only.")]
         public string Phone { get; set; }
+
+        [Required(ErrorMessage = "Please enter Email"), EmailAddress]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "At least 6 characters"), MinLength(6), MaxLength(50)]
         public string Username { get; set; }
+
+        [Required(ErrorMessage = "At least 6 characters"), MinLength(6), MaxLength(50)]
+        [DataType(DataType.Password)]
         public string Passowrd { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

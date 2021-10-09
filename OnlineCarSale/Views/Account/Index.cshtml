@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3 class="mt-3 mb-3"> Welcome </h3>
+
+@if (Session["Name"] != null)
+{
+    <p>Welcome @Session["Name"].ToString()</p>
+
+    <div class="mt-3 mb-3 me-3">
+        <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Addcar", "Account")'">
+            <i class="bi bi-plus-circle"> Add New Car </i>
+        </button>
+        @Html.ActionLink("Logout", "Logout", "Account", new { @class = "btn btn-primary" })
+    </div>
+}
+
+
+
+
+
+

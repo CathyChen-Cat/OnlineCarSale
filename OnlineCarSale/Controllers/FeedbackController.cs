@@ -24,6 +24,7 @@ namespace OnlineCarSale.Controllers
                 {
                     db.Feedbacks.Add(feedback);
                     db.SaveChanges();
+                    ViewBag.Message = "Feedback Saved!";
                     return RedirectToAction("Index");
                 }
             }

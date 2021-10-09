@@ -61,10 +61,12 @@
                             <a class="nav-link" href="/Feedback">Feedback</a>
                         </li>
                     </ul>
-                    <form method="post" class="d-flex" action="@Url.Action("SearchResult", "BuyCar")">
-                        <input class="form-control me-2" type="search" placeholder="Company" aria-label="Search">
-                        <input class="form-control me-2" type="search" placeholder="Model" aria-label="Search">
-                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    <form method="get" action="~/BuyCar/SearchResult">
+                        <div class="d-flex">
+                            <input class="form-control me-2" type="text" required placeholder="Company" id="search" name="searchCompany" />
+                            <input class="form-control me-2" type="text" required placeholder="Model" id="search" name="searchModel" />
+                            <input class="btn btn-outline-primary" type="submit" value="SEARCH" />
+                        </div>
                     </form>
                     <ul class="nav">
                         <li class="nav-item"><a href="/Account/Login" class="nav-link">Login</a></li>

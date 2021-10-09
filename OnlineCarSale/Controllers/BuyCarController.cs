@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OnlineCarSale.Models;
 
 namespace OnlineCarSale.Controllers
 {
@@ -13,9 +14,19 @@ namespace OnlineCarSale.Controllers
         {
             return View();
         }
-        public ActionResult SearchResult()
+
+        public ActionResult SearchResult(string searchCompany, string searchModel)
         {
-            return View();
+            OnlineCarSaleEntities db = new OnlineCarSaleEntities();
+            var cars = from c in db.Cars
+                       select c;
+
+            //Search Function
+            if (!String.IsNullOrEmpty(searchCompany) && !String.IsNullOrEmpty(searchModel))
+            {
+                cars = cars.Where(s => s.Company.Contains(searchCompany) && s.Model.Contains(searchModel));                
+            }            
+            return View(cars);
         }
     }
 }

@@ -239,6 +239,7 @@
     <Content Include="Views\BuyCar\SearchResult.cshtml" />
     <Content Include="Views\Shared\_BuyCarLayout.cshtml" />
     <Content Include="Views\Feedback\Create.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
