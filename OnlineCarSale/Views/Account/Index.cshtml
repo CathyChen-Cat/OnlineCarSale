@@ -3,18 +3,46 @@
     ViewBag.Title = "Index";
 }
 
-<h3 class="mt-3 mb-3"> Welcome </h3>
+<h3 class="mt-3 mb-3"> Your Details </h3>
 
 @if (Session["Name"] != null)
 {
-    <p>Welcome @Session["Name"].ToString()</p>
-
-    <div class="mt-3 mb-3 me-3">
-        <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Addcar", "Account")'">
-            <i class="bi bi-plus-circle"> Add New Car </i>
-        </button>
-        @Html.ActionLink("Logout", "Logout", "Account", new { @class = "btn btn-primary" })
-    </div>
+    <table class="table-primary mb-3">
+        <tbody>
+            <tr>
+                <th scope="row"> Name </th>
+                <td>@Session["Name"].ToString()</td>
+            </tr>
+            <tr>
+                <th scope="row"> Address </th>
+                <td>@Session["Address"].ToString()</td>
+            </tr>
+            <tr>
+                <th scope="row"> Phone </th>
+                <td>@Session["Phone"].ToString()</td>
+            </tr>
+            <tr>
+                <th scope="row"> Email </th>
+                <td>@Session["Email"].ToString()</td>
+            </tr>
+            <tr>
+                <th scope="row"> Username </th>
+                <td>@Session["Username"].ToString()</td>
+            </tr>
+            <tr>
+                <th scope="row"> Your Id </th>
+                <td>@Session["SId"].ToString()</td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Addcar", "Account")'">
+                        <i class="bi bi-plus-circle"> Add New Car </i>
+                    </button>
+                    @Html.ActionLink("Logout", "Logout", "Account", new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
 }
 
 

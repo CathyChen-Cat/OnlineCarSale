@@ -1,38 +1,85 @@
-﻿
+﻿@model OnlineCarSale.Models.Car
+
 @{
     ViewBag.Title = "AddCar";
+    if (Session["Name"] == null)
+    {
+        Response.Redirect("~/Account/Login");
+    }
 }
 
-<form class="row mt-3 mb-3">
+<div class="col-12 mt-3">
+    <h3>Please Fill In Car Detail</h3>
+</div>
+
+@using (Html.BeginForm("AddCar", "Account", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
     <div class="col-12 mt-3">
-        <h3>Please Fill In Car Detail</h3>
+        @Html.LabelFor(model => model.Company, new { @class = "control-label col-md-2" })
     </div>
     <div class="col-12 mt-3">
-        <label for="inputMake" class="form-label">Car Make Company</label>
-        <input type="text" class="form-control" id="inputMake">
+        @Html.TextBoxFor(model => model.Company, new { @class = "form-control", @placeholder = "Car Company" })
+        @Html.ValidationMessageFor(model => model.Company, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-12 mt-3">
+        @Html.LabelFor(model => model.Model, new { @class = "control-label col-md-2" })
     </div>
     <div class="col-12 mt-3">
-        <label for="inputCarModel" class="form-label">Car Model</label>
-        <input type="text" class="form-control" id="inputCarModel">
+        @Html.TextBoxFor(model => model.Model, new { @class = "form-control", @placeholder = "Car Model" })
+        @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-12 mt-3">
+        @Html.LabelFor(model => model.Year, new { @class = "control-label col-md-2" })
     </div>
     <div class="col-12 mt-3">
-        <label for="inputCarYear" class="form-label">Car Year</label>
-        <input type="text" class="form-control" id="inputCarYear">
+        @Html.TextBoxFor(model => model.Year, new { @class = "form-control", @placeholder = "Year" })
+        @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-12 mt-3">
+        @Html.LabelFor(model => model.BodyType, new { @class = "control-label col-md-2" })
     </div>
     <div class="col-12 mt-3">
-        <label for="inputBodyType" class="form-label">Body Type</label>
-        <input type="text" class="form-control" id="inputBodyType">
+        @Html.TextBoxFor(model => model.BodyType, new { @class = "form-control", @placeholder = "Body Type" })
+        @Html.ValidationMessageFor(model => model.BodyType, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-12 mt-3">
+        @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
     </div>
     <div class="col-12 mt-3">
-        <label for="inputPrice" class="form-label">Price</label>
-        <input type="text" class="form-control">
+        @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-12 mt-3">
+        @Html.LabelFor(model => model.Location, new { @class = "control-label col-md-2" })
     </div>
     <div class="col-12 mt-3">
-        <label for="inputLocation" class="form-label">Location</label>
-        <input type="text" class="form-control" id="inputLocation">
+        @Html.TextBoxFor(model => model.Location, new { @class = "form-control", @placeholder = "Your Location" })
+        @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
     </div>
+
+    <div class="col-12 mt-3">
+        @Html.LabelFor(model => model.SId, new { @class = "control-label col-md-2" })
+    </div>
+    <div class="col-12 mt-3">
+        @Html.TextBoxFor(model => model.SId, new { @class = "form-control", @placeholder = "Your Id" })
+        @Html.ValidationMessageFor(model => model.SId, "", new { @class = "text-danger" })
+    </div>
+
     <div class="col-12 mt-3">
         <button type="submit" class="btn btn-primary">Add</button>
     </div>
-</form>
+
+    <div class="col-12 mt-3">
+        <a href="~/Account/Index">BACK</a>
+    </div>
+}
+
+
 

@@ -24,6 +24,20 @@ namespace OnlineCarSale.Controllers
             }
         }
 
+        public ActionResult SellerDetail(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Login");
+            }
+            Seller seller = db.Sellers.Find(id);
+            if (seller == null)
+            {
+                return RedirectToAction("Login");
+            }
+            return View(seller);
+        }
+
         //GET: Register
         public ActionResult Register()
         {
@@ -103,10 +117,14 @@ namespace OnlineCarSale.Controllers
         [HttpPost]
         public ActionResult AddCar(Car car)
         {
-            db.Cars.Add(car);
-            db.SaveChanges();
-            ViewBag.Message = "Car Information Saved!";
-            return RedirectToAction("AddCar");
+            if (ModelState.IsValid)
+            {
+                db.Cars.Add(car);
+                db.SaveChanges();
+                ViewBag.Message = "Car Information Saved!";
+                return RedirectToAction("Index");
+            }
+            return View("AddCar", car);
         }
     }
 }

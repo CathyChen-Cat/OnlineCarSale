@@ -24,7 +24,7 @@ namespace OnlineCarSale.Controllers
             //Search Function
             if (!String.IsNullOrEmpty(searchCompany) && !String.IsNullOrEmpty(searchModel))
             {
-                cars = cars.Where(s => s.Company.Contains(searchCompany) && s.Model.Contains(searchModel));                
+                cars = cars.Where(s => s.Company.Equals(searchCompany) && s.Model.Equals(searchModel));                
             }            
             return View(cars);
         }
