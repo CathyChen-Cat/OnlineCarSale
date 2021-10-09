@@ -10,29 +10,27 @@ namespace OnlineCarSale.Controllers
     public class FeedbackController : Controller
     {
         // GET: Feedback
-        public ActionResult Index()
+        public ActionResult Index(string msg)
         {
+            ViewBag.Message = msg;
             return View();
         }
 
         public ActionResult Create([Bind(Include = "Name, Email, InfoRadio, NeedRadio, Comment")] Feedback feedback)
         {
             OnlineCarSaleEntities db = new OnlineCarSaleEntities();
-            try
+
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    db.Feedbacks.Add(feedback);
-                    db.SaveChanges();
-                    ViewBag.Message = "Feedback Saved!";
-                    return RedirectToAction("Index");
-                }
+                db.Feedbacks.Add(feedback);
+                db.SaveChanges();
+                return RedirectToAction("Index", new { msg = "Thanks for your feedback!" });
             }
-            catch (Exception)
+            else
             {
                 ModelState.AddModelError("", "Unable to save changes.");
+                return View("Create", feedback);
             }
-            return View(feedback);
         }
     }
 }

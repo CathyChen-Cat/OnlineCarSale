@@ -61,7 +61,7 @@ namespace OnlineCarSale.Controllers
 
             db.Sellers.Add(seller);
             db.SaveChanges();
-
+            ViewBag.Message = "Your Information Saved!";
             return RedirectToAction("Login");
         }
 
@@ -108,8 +108,9 @@ namespace OnlineCarSale.Controllers
         }
 
         //GET
-        public ActionResult AddCar()
+        public ActionResult AddCar(string msg)
         {
+            ViewBag.Message = msg;
             return View();
         }
 
@@ -122,7 +123,7 @@ namespace OnlineCarSale.Controllers
                 db.Cars.Add(car);
                 db.SaveChanges();
                 ViewBag.Message = "Car Information Saved!";
-                return RedirectToAction("Index");
+                return RedirectToAction("AddCar", new { msg = "Car saved!" });
             }
             return View("AddCar", car);
         }
