@@ -14,7 +14,7 @@ namespace OnlineCarSale.Controllers
         // GET: Seller Detail
         public ActionResult Index()
         {
-            if (Session["Name"] != null)
+            if (Session["SId"] != null)
             {
                 return View();
             }
@@ -82,20 +82,46 @@ namespace OnlineCarSale.Controllers
 
             var login = db.Sellers.Where(u => u.Username.Equals(Username) && u.Passowrd.Equals(Passowrd));
 
-            if (login.Count() <= 0)
+            var sellerDetail = (from c in db.Cars
+                                join s in login on c.SId equals s.SId
+                                orderby c.CId
+                                select new
+                                {
+                                    c.CId,
+                                    c.Price,
+                                    c.Company,
+                                    c.Year,
+                                    c.Model,
+                                    c.BodyType,
+                                    c.Location,
+                                    s.SId,
+                                    s.Name,
+                                    s.Email,
+                                    s.Phone,
+                                    s.Address,
+                                    s.Username
+                                }).ToList();            
+
+            if (sellerDetail.Count() <= 0)
             {
                 ModelState.AddModelError("Username", "Login details incorrect.");
                 return View("Login");
             }
             else
             {
-                Session["Name"] = login.FirstOrDefault().Name;
-                Session["Address"] = login.FirstOrDefault().Address;
-                Session["Phone"] = login.FirstOrDefault().Phone;
-                Session["Email"] = login.FirstOrDefault().Email;
-                Session["Username"] = login.FirstOrDefault().Username;
-                Session["Passowrd"] = login.FirstOrDefault().Passowrd;
-                Session["SId"] = login.FirstOrDefault().SId;
+                //Add session
+                Session["SId"] = sellerDetail.FirstOrDefault().SId;
+                Session["Name"] = sellerDetail.FirstOrDefault().Name;
+                Session["Address"] = sellerDetail.FirstOrDefault().Address;
+                Session["Phone"] = sellerDetail.FirstOrDefault().Phone;
+                Session["Email"] = sellerDetail.FirstOrDefault().Email;
+                Session["Username"] = sellerDetail.FirstOrDefault().Username;
+                Session["Year"] = sellerDetail.FirstOrDefault().Year;
+                Session["Company"] = sellerDetail.FirstOrDefault().Company;
+                Session["Model"] = sellerDetail.FirstOrDefault().Model;
+                Session["BodyType"] = sellerDetail.FirstOrDefault().BodyType;
+                Session["Price"] = sellerDetail.FirstOrDefault().Price;
+                Session["Location"] = sellerDetail.FirstOrDefault().Location;
                 return RedirectToAction("Index", "Account");
             }
         }
